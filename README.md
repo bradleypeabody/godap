@@ -59,8 +59,7 @@ brute is muscled into submission.
 Dependencies
 ------------
 
-ASN.1+BER encoding decoding is done with this:
- github.com/go-asn1-ber/asn1-ber
+ASN.1+BER encoding and decoding is done with this: https://github.com/go-asn1-ber/asn1-ber
 
 It works, it's cool.
 
