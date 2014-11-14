@@ -53,3 +53,18 @@ Have a look at the test file for an example of what to do.
 In a way, with this project I embrace LDAP.  In the sense that a wrestler
 embraces the neck of his opponent to form a headlock, and the unruly
 brute is muscled into submission.
+
+Disclaimers
+-----------
+
+1. This thing is still fairly rough.  Haven't had time to polish it. But I
+wanted to get it up on Github in case anyone else was interested. I've
+been searching for something like this off and on for a while, finally
+got around to writing it.
+
+2. It's not impossible that in some places I'm violating pieces of the
+LDAP spec.  My goal with this project was to get it so LDAP can be
+useful as an authentication mechanism on top of other
+non-directory data sources.  It does that, I'm happy.
+Pull requests welcome to fix things that aren't perfect.  License
+is MIT so feel free to do whatever you want with the code.
