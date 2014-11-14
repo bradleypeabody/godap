@@ -34,7 +34,9 @@ ASN.1 and it's encoding with all of wellest of well meaning intentions.
 The trouble is that with today's Internet, LDAP is just a pain in the ass.
 You can't call it from your browser.  It's not human readable or easy
 to debug.  Tooling is often arcane and confusing.  It's way more complicated
-than what is needed for most simple authentication-only uses.
+than what is needed for most simple authentication-only uses. (Yes, I know
+there are many other uses than authentication - but it's often too complicated
+for those too.)
 
 Likely owing to the complexity of the protocol, there seems to be virtually
 no easy to use library to implement the server side of the LDAP protocol
