@@ -13,7 +13,7 @@ import (
 )
 
 // lame, but simple - set to true when you want log output
-const LDAPDebug = false
+var LDAPDebug = false
 
 func ldapdebug(format string, v ...interface{}) {
 	if LDAPDebug {
