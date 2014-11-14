@@ -54,6 +54,14 @@ In a way, with this project I embrace LDAP.  In the sense that a wrestler
 embraces the neck of his opponent to form a headlock, and the unruly
 brute is muscled into submission.
 
+Dependencies
+------------
+
+ASN.1+BAR encoding decoding is done with this:
+ github.com/go-asn1-ber/asn1-ber
+
+It works, it's cool.
+
 Disclaimers
 -----------
 
