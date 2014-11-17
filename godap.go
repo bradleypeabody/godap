@@ -51,6 +51,13 @@ func (s *LDAPServer) Serve() error {
 		}
 		go func(conn net.Conn) {
 
+			// catch and report panics - we don't want it to crash the server
+			defer func() {
+				if r := recover(); r != nil {
+					log.Printf("Caught panic while serving request (conn=%v): %v", conn, r)
+				}
+			}()
+
 			defer conn.Close()
 
 			// keep the connection around for a minute
