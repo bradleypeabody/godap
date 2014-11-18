@@ -1,7 +1,7 @@
 godap
 =====
 
-Demo/skeleton of minimalistic LDAP serving in Go
+A minimalistic LDAP server in Go
 
 What is this thing?
 -------------------
