@@ -44,7 +44,7 @@ that isn't tied in with some complete directory server system; and certainly
 not in a language as easy to "make it work" as Go.
 
 So this means that if you are a web developer and you have a database table
-with usernames and (hopefully properly hashed) passwords in it, and you
+with usernames and (hopefully properly salted and hashed) passwords in it, and you
 have a third party application that supports LDAP authentication, you
 can't easily use your own user data source and just make it "speak LDAP"
 to this other application.
