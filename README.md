@@ -22,14 +22,14 @@ Because the road to hell is paved with good intentions.
 The short version of the story goes like this:
 I hate LDAP.  I used to love it.  But I loved it for all the wrong reasons.
 LDAP is supported as an authentication solution by many different pieces of
-software.  Aside from it's de jure standard status, it's wide deployment
+software.  Aside from its de jure standard status, its wide deployment
 cements it as a de facto standard as well.
 
 However, just because it is a standard doesn't mean it is a great idea.
 
-I'll admit that given it's age LDAP has had a good run.  I'm sure it's
+I'll admit that given its age LDAP has had a good run.  I'm sure its
 authors carefully considered how to construct the protocol and chose
-ASN.1 and it's encoding with all of wellest of well meaning intentions.
+ASN.1 and its encoding with all of wellest of well meaning intentions.
 
 The trouble is that with today's Internet, LDAP is just a pain in the ass.
 You can't call it from your browser.  It's not human readable or easy
