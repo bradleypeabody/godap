@@ -50,7 +50,7 @@ can't easily use your own user data source and just make it "speak LDAP"
 to this other application.
 
 Well, this project provides the basic guts to make that work.
-Have a look at the test file for an example of what to do.
+<a href="https://github.com/bradleypeabody/godap/blob/master/godap_test.go">Have a look at the test file</a> for an example of what to do.
 
 In a way, with this project I embrace LDAP.  In the sense that a wrestler
 embraces the neck of his opponent to form a headlock, and the unruly
