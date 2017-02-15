@@ -2,6 +2,7 @@ package godap
 
 import (
 	"fmt"
+
 	"github.com/go-asn1-ber/asn1-ber"
 )
 
@@ -43,46 +44,48 @@ func ParseLDAPSimpleSearchRequestPacket(p *ber.Packet) (*LDAPSimpleSearchRequest
 	ret.TimeLimit = ForceInt64(rps[4].Value)
 	ret.TypesOnly = rps[5].Value.(bool)
 
-    // Check to see if it looks like a simple search criteria
-    err = CheckPacket(rps[6], ber.ClassContext, ber.TypeConstructed, 0x3)
-    if err == nil {
-    	// It is, return the attribute and value
-        ret.FilterAttr = string(rps[6].Children[0].ByteValue)
-        ret.FilterValue = string(rps[6].Children[1].ByteValue)
-    } else {
-    	// This is likely some sort of complex search criteria. 
-    	// Try to generate a searchFingerPrint based on the values
-    	// You will have to understand this fingerprint in your code
-        var getContextValue func(p *ber.Packet) string
-        getContextValue = func(p *ber.Packet) string {
-            ret := ""
-            if p.Value != nil {
-                ret = fmt.Sprint(p.Value)
-            }
-            for _, child := range p.Children {
-                childVal := getContextValue(child)
-                if childVal != "" {
-                    if ret != "" {
-                        ret += ","
-                    }
-                    ret += childVal
-                }
-            }
-            return ret
-        }
+	// Check to see if it looks like a simple search criteria
+	err = CheckPacket(rps[6], ber.ClassContext, ber.TypeConstructed, 0x3)
+	if err == nil {
+		// It is, return the attribute and value
+		ret.FilterAttr = string(rps[6].Children[0].ByteValue)
+		ret.FilterValue = string(rps[6].Children[1].ByteValue)
+	} else {
+		// This is likely some sort of complex search criteria.
+		// Try to generate a searchFingerPrint based on the values
+		// You will have to understand this fingerprint in your code
+		var getContextValue func(p *ber.Packet) string
+		getContextValue = func(p *ber.Packet) string {
+			ret := ""
+			if p.Value != nil {
+				ret = fmt.Sprint(p.Value)
+			}
+			for _, child := range p.Children {
+				childVal := getContextValue(child)
+				if childVal != "" {
+					if ret != "" {
+						ret += ","
+					}
+					ret += childVal
+				}
+			}
+			return ret
+		}
 
-        ret.FilterAttr = "searchFingerprint"
-        ret.FilterValue = getContextValue(rps[6])
-        for index := 7; index < len(rps); index++ {
-            value := getContextValue(rps[index])
-            if value != "" {
-                if ret.FilterValue != "" {
-                    ret.FilterValue += ","
-                }
-                ret.FilterValue += value
-            }
-        }
-    }
+		ret.FilterAttr = "searchFingerprint"
+		ret.FilterValue = getContextValue(rps[6])
+		for index := 7; index < len(rps); index++ {
+			value := getContextValue(rps[index])
+			if value != "" {
+				if ret.FilterValue != "" {
+					ret.FilterValue += ","
+				}
+				ret.FilterValue += value
+			}
+		}
+
+		return ret, ErrSearchRequestTooComplex
+	}
 
 	return ret, nil
 
