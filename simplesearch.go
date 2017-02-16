@@ -84,7 +84,6 @@ func ParseLDAPSimpleSearchRequestPacket(p *ber.Packet) (*LDAPSimpleSearchRequest
 			}
 		}
 
-		return ret, ErrSearchRequestTooComplex
 	}
 
 	return ret, nil
